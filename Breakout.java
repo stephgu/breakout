@@ -96,7 +96,6 @@ public class Breakout extends GraphicsProgram {
 	
 	private void setUpPaddle() {
 		print(HEIGHT - PADDLE_Y_OFFSET);
-		
 		paddle.setFilled(true);
 		paddle.setColor(Color.BLACK);
 		paddle.setFillColor(Color.BLACK);
@@ -105,7 +104,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void MouseMoved(MouseEvent e) {
 		int x = e.getX();
-		
+		paddle.setLocation(x, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT));
 	}
 	
 	/* Private instance variables */
