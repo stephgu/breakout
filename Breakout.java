@@ -114,5 +114,5 @@ public class Breakout extends GraphicsProgram {
 	
 	/* Private instance variables */
 	
-	GRect paddle = new GRect((WIDTH - PADDLE_WIDTH)/2.0, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT), PADDLE_WIDTH, PADDLE_HEIGHT);
+	GRect paddle = new GRect((WIDTH - PADDLE_WIDTH)/2.0, HEIGHT - (30 + PADDLE_HEIGHT), PADDLE_WIDTH, PADDLE_HEIGHT);
 }
