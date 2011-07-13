@@ -60,7 +60,29 @@ public class Breakout extends GraphicsProgram {
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
-		/* You fill this in, along with any subsidiary methods */
+		setUpBricks();
 	}
-
+	
+	private void setUpBricks() {
+		int y = BRICK_Y_OFFSET;
+		Color color = Color.RED;
+		for (int i = 0; i < NBRICK_ROWS; i++) {
+			brickRow(y, color);
+		}
+	}
+	
+	private void brickRow(int y, Color color) {
+		int x = BRICK_SEP;
+		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
+			addBrick(x, y, color);
+		}
+	}
+	
+	private void addBrick(int x, int y, Color color) {
+		GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
+		brick.setFilled(true);
+		brick.setColor(color);
+		brick.setFillColor(color);
+		add(brick);
+	}
 }
