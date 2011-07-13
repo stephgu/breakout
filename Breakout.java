@@ -75,6 +75,7 @@ public class Breakout extends GraphicsProgram {
 		int x = BRICK_SEP;
 		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
 			addBrick(x, y, color);
+			x += (BRICK_SEP + BRICK_WIDTH);
 		}
 	}
 	
