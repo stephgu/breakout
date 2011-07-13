@@ -61,6 +61,7 @@ public class Breakout extends GraphicsProgram {
 /** Runs the Breakout program. */
 	public void run() {
 		setUpBricks();
+		setUpPaddle();
 	}
 	
 	private void setUpBricks() {
@@ -90,5 +91,13 @@ public class Breakout extends GraphicsProgram {
 		brick.setColor(color);
 		brick.setFillColor(color);
 		add(brick);
+	}
+	
+	private void setUpPaddle() {
+		GRect paddle = new GRect((WIDTH - PADDLE_WIDTH)/2.0, HEIGHT-PADDLE_Y_OFFSET, PADDLE_WIDTH, PADDLE_HEIGHT);
+		paddle.setFilled(true);
+		paddle.setColor(Color.BLACK);
+		paddle.setFillColor(Color.BLACK);
+		add(paddle);
 	}
 }
