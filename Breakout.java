@@ -125,7 +125,7 @@ public class Breakout extends GraphicsProgram {
 		println("make ball move: " + ballNotAtBottom());
 		initialMovement();
 		while (ballNotAtBottom()) {
-			print("ball moves");
+			println("ball moves");
 			if(((ballx+BALL_RADIUS*2) > WIDTH) || ballx < 0) {
 				vx = -vx;
 			}
