@@ -156,7 +156,6 @@ public class Breakout extends GraphicsProgram {
 		} else if ((collider != null)) {
 			vy = -vy; 
 			remove(collider);
-			println("removed");
 		}
 	}
 	
@@ -185,10 +184,10 @@ public class Breakout extends GraphicsProgram {
 		add(end);
 	}
 	
-	private void restart() {
-		run();
-		remove(end);
-	}
+//	private void restart() {
+//		run();
+//		remove(end);
+//	}
 	/* Private instance variables */
 
 	
