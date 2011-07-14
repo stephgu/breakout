@@ -229,6 +229,7 @@ public class Breakout extends GraphicsProgram {
 			win.setFont(new Font("Serif", Font.BOLD, 18));
 			win.setLocation((WIDTH - gameover.getWidth())/2.0, (HEIGHT - gameover.getAscent())/2.0);
 			add(win);
+			yourScore = 1000000;
 		} else {
 			gameover.setFont(new Font("Serif", Font.BOLD, 18));
 			gameover.setLocation((WIDTH - gameover.getWidth())/2.0, (HEIGHT - gameover.getAscent())/2.0);
