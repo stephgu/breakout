@@ -65,7 +65,9 @@ public class Breakout extends GraphicsProgram {
 		setUpBricks();
 		setUpPaddle();
 		setUpBall();
+		clickForStart();
 		waitForClick();
+		removeStartLabel();
 		makeBallMove();
 	}
 	
@@ -185,6 +187,15 @@ public class Breakout extends GraphicsProgram {
 		return true;
 	}
 	
+	private void clickForStart() {
+		clickForStart.setLocation((WIDTH - clickForStart.getWidth())/2.0, (HEIGHT - clickForStart.getAscent())/2.0);
+		add(clickForStart);
+	}
+	
+	private void removeStartLabel() {
+		remove(clickForStart);
+	}
+	
 	private void endGame() {
 		if (numBricks == 0) {
 			win.setFont(new Font("Serif", Font.BOLD, 18));
@@ -208,6 +219,7 @@ public class Breakout extends GraphicsProgram {
 	AudioClip bgMusic = MediaTools.loadAudioClip("gameboy.au");
 	GRect paddle = new GRect((WIDTH - PADDLE_WIDTH)/2.0, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT), PADDLE_WIDTH, PADDLE_HEIGHT);
 	GOval ball = new GOval((WIDTH - BALL_RADIUS*2)/2.0, (HEIGHT - BALL_RADIUS*2)/2.0, BALL_RADIUS*2, BALL_RADIUS*2);
+	GLabel clickForStart = new GLabel("CLICK TO START");
 	GLabel gameover = new GLabel("GAME OVER");
 	GLabel win = new GLabel("YOU WIN");
 	private RandomGenerator rgen = RandomGenerator.getInstance(); 
