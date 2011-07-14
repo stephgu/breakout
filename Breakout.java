@@ -117,9 +117,7 @@ public class Breakout extends GraphicsProgram {
 		ball.setFilled(true);
 		ball.setFillColor(Color.BLACK);
 		add(ball);
-	}
-	
-	public void mouseClicked(MouseEvent e) {
+		waitForClick();
 		makeBallMove();
 	}
 	
