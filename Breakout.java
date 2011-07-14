@@ -158,6 +158,7 @@ public class Breakout extends GraphicsProgram {
 			vy = -vy; 
 			remove(collider);
 			numBricks--;
+			println(numBricks);
 		}
 	}
 	
