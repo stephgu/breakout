@@ -63,6 +63,7 @@ public class Breakout extends GraphicsProgram {
 		addMouseListeners();
 		setUpBricks();
 		setUpPaddle();
+		setUpBall();
 	}
 	
 	private void setUpBricks() {
@@ -110,6 +111,12 @@ public class Breakout extends GraphicsProgram {
 			x = BRICK_SEP;
 		}
 		paddle.setLocation(x, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT));
+	}
+	
+	private void setUpBall() {
+		ball.setFilled(true);
+		ball.setFillColor(Color.BLACK);
+		add(ball);
 	}
 	
 	/* Private instance variables */
