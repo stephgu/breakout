@@ -138,7 +138,7 @@ public class Breakout extends GraphicsProgram {
 			bally += vy;
 			ball.setLocation(ballx, bally);
 			add(ball);
-			pause(1000);
+			pause(50);
 		}
 	}
 	
