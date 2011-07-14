@@ -119,8 +119,19 @@ public class Breakout extends GraphicsProgram {
 		add(ball);
 	}
 	
+	public void mouseClicked(MouseEvent e) {
+		makeBallMove();
+	}
+	
+	private void makeBallMove() {
+		vx = rgen.nextDouble(1.0, 3.0);
+		if (rgen.nextBoolean()) vx = -vx;
+	}
+	
 	/* Private instance variables */
 	
 	GRect paddle = new GRect((WIDTH - PADDLE_WIDTH)/2.0, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT), PADDLE_WIDTH, PADDLE_HEIGHT);
 	GOval ball = new GOval((WIDTH - BALL_RADIUS*2)/2.0, (HEIGHT - BALL_RADIUS*2)/2.0, BALL_RADIUS*2, BALL_RADIUS*2);
+	private RandomGenerator rgen = RandomGenerator.getInstance(); 
+	private double vx, vy; 
 }
