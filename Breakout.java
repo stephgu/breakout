@@ -140,7 +140,7 @@ public class Breakout extends GraphicsProgram {
 		}
 		endGame();
 		waitForClick();
-		restart();
+		//restart();
 	}
 	
 	private void initialMovement() {
