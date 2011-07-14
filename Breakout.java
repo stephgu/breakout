@@ -61,9 +61,6 @@ public class Breakout extends GraphicsProgram {
 /** Runs the Breakout program. */
 	public void run() {
 		addMouseListeners();
-		while(true) {
-			checkForCollisions(); 
-		}
 		setUpBricks();
 		setUpPaddle();
 		setUpBall();
@@ -136,6 +133,7 @@ public class Breakout extends GraphicsProgram {
 			ballx += vx;
 			bally += vy;
 			ball.setLocation(ballx, bally);
+			checkForCollisions();
 			pause(10);
 		}
 	}
