@@ -224,6 +224,7 @@ public class Breakout extends GraphicsProgram {
 			highScore = yourScore;
 		}
 		highscore.setLabel("Highscore: " + highScore);
+		highscore.setFont(new Font("Serif", Font.BOLD, 16));
 		highscore.setLocation((WIDTH - highscore.getWidth())/2.0, HEIGHT/2.0 + gameover.getHeight());
 		add(highscore);
 	}
