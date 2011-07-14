@@ -181,7 +181,7 @@ public class Breakout extends GraphicsProgram {
 	private void keepScore() {
 		numBricks--;
 		yourScore += 10;
-		println(score.getLabel());
+		score.setLabel("Score: " + yourScore);
 		add(score);
 	}
 	
