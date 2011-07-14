@@ -156,7 +156,9 @@ public class Breakout extends GraphicsProgram {
 	
 	private void checkForCollisions() {
 		GObject collider = getCollidingObject(); 
-		if (collider == paddle) {
+		if (collider == score) {
+			
+		} else if (collider == paddle) {
 			vy = -vy; 
 		} else if ((collider != null)) {
 			bounceClip.play();
