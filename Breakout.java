@@ -174,7 +174,7 @@ public class Breakout extends GraphicsProgram {
 			
 		} else if (collider == paddle) {
 			if(glued == true) {
-				bally += BALL_RADIUS*2.01;
+				bally -= BALL_RADIUS*2.01;
 			}
 			vy = -vy; 
 			edgeConditions();
