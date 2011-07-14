@@ -219,7 +219,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void fixGluing() {
 		if(glued == true) {
-			bally -= BALL_RADIUS*2.01;
+			bally -= BALL_RADIUS*2.02;
 		}
 	}
 	private void keepScore() {
