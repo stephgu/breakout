@@ -205,7 +205,7 @@ public class Breakout extends GraphicsProgram {
 	/* Private instance variables */
 	
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
-	AudioClip bgMusic = MediaTools.loadAudioClip("gameboy.mp3");
+	AudioClip bgMusic = MediaTools.loadAudioClip("gameboy.au");
 	GRect paddle = new GRect((WIDTH - PADDLE_WIDTH)/2.0, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT), PADDLE_WIDTH, PADDLE_HEIGHT);
 	GOval ball = new GOval((WIDTH - BALL_RADIUS*2)/2.0, (HEIGHT - BALL_RADIUS*2)/2.0, BALL_RADIUS*2, BALL_RADIUS*2);
 	GLabel gameover = new GLabel("GAME OVER");
