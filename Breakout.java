@@ -190,6 +190,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void speedGame() {
+		hitPaddleCount++;
 		if (hitPaddleCount > 7) {
 			vx *= 1.3;
 		}
@@ -268,6 +269,7 @@ public class Breakout extends GraphicsProgram {
 	private int numBricks;
 	private int yourScore = 0; 
 	private int highScore = 0;
+	private int hitPaddleCount = 0;
 	GLabel score = new GLabel("Score: " + yourScore);
 	GLabel highscore = new GLabel("Highscore: " + highScore);
 }
