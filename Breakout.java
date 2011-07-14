@@ -126,7 +126,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void makeBallMove() {
 		initialMovement();
-		while (ballNotAtBottom() || numBricks == 0) {
+		while (ballNotAtBottom() || numBricks != 0) {
 			if(((ballx+BALL_RADIUS*2) > WIDTH) || ballx < 0) {
 				vx = -vx;
 			}
