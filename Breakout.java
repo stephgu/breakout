@@ -173,9 +173,7 @@ public class Breakout extends GraphicsProgram {
 		if (collider == score) {
 			
 		} else if (collider == paddle) {
-			if(glued == true) {
-				bally -= BALL_RADIUS*2.01;
-			}
+			fixGluing();
 			vy = -vy; 
 			edgeConditions();
 			speedGame();
@@ -216,6 +214,12 @@ public class Breakout extends GraphicsProgram {
 		hitPaddleCount++;
 		if (hitPaddleCount == 10) {
 			vx *= 1.3;
+		}
+	}
+	
+	private void fixGluing() {
+		if(glued == true) {
+			bally -= BALL_RADIUS*2.0;
 		}
 	}
 	private void keepScore() {
