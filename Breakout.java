@@ -265,7 +265,7 @@ public class Breakout extends GraphicsProgram {
 		add(highscore);
 		score.setLabel("Your Score: " + yourScore);
 		score.setFont(new Font("Serif", Font.BOLD, 16));
-		score.setLocation((WIDTH - score.getWidth())/2.0, highscore.getY() + highscore.getHeight());
+		score.setLocation((WIDTH - score.getWidth())/2.0, highscore.getY() - highscore.getHeight());
 		add(score);
 		
 	}
