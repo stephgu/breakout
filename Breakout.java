@@ -216,8 +216,16 @@ public class Breakout extends GraphicsProgram {
 			gameover.setLocation((WIDTH - gameover.getWidth())/2.0, (HEIGHT - gameover.getAscent())/2.0);
 			add(gameover);
 		}
+		setHighScore();
 	}
 	
+	private void setHighScore() {
+		if (yourScore > highScore) {
+			highScore = yourScore;
+		}
+		highscore.setLabel("Highscore: " + highScore);
+		highscore.setLocation((WIDTH - highscore.getWidth())/2.0, HEIGHT/2.0 + gameover.getHeight());
+	}
 //	private void restart() {
 //		remove(gameover);
 //		run();
