@@ -196,11 +196,11 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void setLabels() {
-		clickForStart.setLocation((WIDTH - clickForStart.getWidth())/2.0, (HEIGHT - clickForStart.getAscent())/2.0);
 		clickForStart.setFont(new Font("Serif", Font.BOLD, 18));
+		clickForStart.setLocation((WIDTH - clickForStart.getWidth())/2.0, (HEIGHT - clickForStart.getAscent())/2.0);
 		add(clickForStart);
-		score.setLocation(4, HEIGHT - 4);
 		score.setFont(new Font("Serif", Font.BOLD, 18));
+		score.setLocation(4, HEIGHT - 4);
 		add(score);
 	}
 	
