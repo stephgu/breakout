@@ -252,8 +252,8 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void restart() {
-		removeAll();
-		yourScore = 0; 
+		yourScore = 0;
+		removeAll(); 
 		run();
 	}
 	
