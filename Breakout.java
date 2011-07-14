@@ -64,6 +64,9 @@ public class Breakout extends GraphicsProgram {
 		setUpBricks();
 		setUpPaddle();
 		setUpBall();
+		while(true) {
+			checkForCollisions(); 
+		}
 	}
 	
 	private void setUpBricks() {
@@ -123,8 +126,6 @@ public class Breakout extends GraphicsProgram {
 	
 	private void makeBallMove() {
 		initialMovement();
-		double ballx = ball.getX();
-		double bally = ball.getY();
 		while (true) {
 			if(((ballx+BALL_RADIUS*2) > WIDTH) || ballx < 0) {
 				vx = -vx;
@@ -144,10 +145,36 @@ public class Breakout extends GraphicsProgram {
 		if (rgen.nextBoolean()) vx = -vx;
 		vy = 3.0; 
 	}
+	
+	private void checkForCollisions() {
+		GObject collider = getCollidingObject(); 
+		if (collider == paddle) {
+			vx = -vx; 
+			vy = -vy; 
+		} else if ((collider != null)) {
+			vx = -vx; 
+			vy = -vy; 
+			remove(collider);
+		}
+	}
+	
+	private GObject getCollidingObject() {
+		double[][] fourCorners = {{ballx, bally}, {ballx + 2*BALL_RADIUS, bally}, 
+				{ballx + 2*BALL_RADIUS, bally + 2*BALL_RADIUS}, {ballx, bally + 2*BALL_RADIUS}};
+		for (int i = 0; i < 4; i++) {
+			GObject obj = getElementAt(fourCorners[i][1], fourCorners[i][2]);
+			if (obj != null) {
+				return obj;
+			}
+		}
+		return null; 
+	}
 	/* Private instance variables */
 	
 	GRect paddle = new GRect((WIDTH - PADDLE_WIDTH)/2.0, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT), PADDLE_WIDTH, PADDLE_HEIGHT);
 	GOval ball = new GOval((WIDTH - BALL_RADIUS*2)/2.0, (HEIGHT - BALL_RADIUS*2)/2.0, BALL_RADIUS*2, BALL_RADIUS*2);
 	private RandomGenerator rgen = RandomGenerator.getInstance(); 
 	private double vx, vy; 
+	double ballx = ball.getX();
+	double bally = ball.getY();
 }
