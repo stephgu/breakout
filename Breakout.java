@@ -65,9 +65,9 @@ public class Breakout extends GraphicsProgram {
 		setUpBricks();
 		setUpPaddle();
 		setUpBall();
-		clickForStart();
+		setLabels();
 		waitForClick();
-		removeStartLabel();
+		removeLabels();
 		makeBallMove();
 	}
 	
@@ -162,8 +162,7 @@ public class Breakout extends GraphicsProgram {
 			bounceClip.play();
 			vy = -vy; 
 			remove(collider);
-			numBricks--;
-			println(numBricks);
+			keepScore();
 		}
 	}
 	
@@ -179,6 +178,12 @@ public class Breakout extends GraphicsProgram {
 		return null; 
 	}
 	
+	private void keepScore() {
+		numBricks--;
+		yourScore += 10;
+		add(score);
+	}
+	
 	private boolean ballNotAtBottom() {
 		if ((bally + BALL_RADIUS*2) > HEIGHT) {
 			println(bally + BALL_RADIUS*2);
@@ -187,12 +192,16 @@ public class Breakout extends GraphicsProgram {
 		return true;
 	}
 	
-	private void clickForStart() {
+	private void setLabels() {
 		clickForStart.setLocation((WIDTH - clickForStart.getWidth())/2.0, (HEIGHT - clickForStart.getAscent())/2.0);
+		clickForStart.setFont(new Font("Serif", Font.BOLD, 18));
 		add(clickForStart);
+		score.setLocation(4, HEIGHT - 4);
+		score.setFont(new Font("Serif", Font.BOLD, 18));
+		add(score);
 	}
 	
-	private void removeStartLabel() {
+	private void removeLabels() {
 		remove(clickForStart);
 	}
 	
@@ -222,9 +231,14 @@ public class Breakout extends GraphicsProgram {
 	GLabel clickForStart = new GLabel("CLICK TO START");
 	GLabel gameover = new GLabel("GAME OVER");
 	GLabel win = new GLabel("YOU WIN");
+	
 	private RandomGenerator rgen = RandomGenerator.getInstance(); 
 	private double vx, vy; 
 	double ballx = ball.getX();
 	double bally = ball.getY();
 	private int numBricks;
+	private int yourScore = 0; 
+	private int highScore = 0;
+	GLabel score = new GLabel("Score: " + yourScore);
+	GLabel highscore = new GLabel("Highscore: " + highScore);
 }
