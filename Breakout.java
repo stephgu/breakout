@@ -30,7 +30,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int PADDLE_HEIGHT = 10;
 
 /** Offset of the paddle up from the bottom */
-	private static final int PADDLE_Y_OFFSET = 60;
+	private static final int PADDLE_Y_OFFSET = 30;
 
 /** Number of bricks per row */
 	private static final int NBRICKS_PER_ROW = 10;
@@ -98,7 +98,6 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void setUpPaddle() {
-		print(HEIGHT - PADDLE_Y_OFFSET);
 		paddle.setFilled(true);
 		paddle.setColor(Color.BLACK);
 		paddle.setFillColor(Color.BLACK);
@@ -123,7 +122,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void makeBallMove() {
-		print("make ball move");
+		println("make ball move: " + ballNotAtBottom());
 		initialMovement();
 		while (ballNotAtBottom()) {
 			if(((ballx+BALL_RADIUS*2) > WIDTH) || ballx < 0) {
