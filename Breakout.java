@@ -22,7 +22,7 @@ public class Breakout extends GraphicsProgram {
 	public static final int APPLICATION_HEIGHT = 625;
 
 /** Dimensions of game board (usually the same) */
-	private static final int WIDTH = APPLICATION_WIDTH;
+	private static final int WIDTH = 400;
 	private static final int HEIGHT = 600;
 
 /** Dimensions of the paddle */
