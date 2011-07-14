@@ -238,6 +238,7 @@ public class Breakout extends GraphicsProgram {
 	private void restart() {
 		removeAll();
 		yourScore = 0; 
+		println("highscore: " + highScore);
 		run();
 	}
 	
