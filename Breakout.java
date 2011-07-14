@@ -162,7 +162,7 @@ public class Breakout extends GraphicsProgram {
 		for (int i = 0; i < 4; i++) {
 			print(fourCorners[i][1]);
 			print(fourCorners[i][2]);
-			GObject obj = getElementAt(fourCorners[i][1], fourCorners[i][2]);
+			GObject obj = getElementAt(fourCorners[i][0], fourCorners[i][1]);
 			if (obj != null) {
 				return obj;
 			}
