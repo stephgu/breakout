@@ -160,7 +160,7 @@ public class Breakout extends GraphicsProgram {
 			
 		} else if (collider == paddle) {
 			vy = -vy; 
-			if (((ballx < paddle.getX()+BALL_RADIUS*2.3) && (ballx > paddle.getX())) || 
+			if (((ballx < paddle.getX()+BALL_RADIUS*2.3) && (ballx > paddle.getX()-BALL_RADIUS*2)) || 
 					((ballx < paddle.getX()+PADDLE_WIDTH) && (ballx > paddle.getX()+PADDLE_WIDTH-BALL_RADIUS*2.3))) {
 				vx = -vx;
 			}
