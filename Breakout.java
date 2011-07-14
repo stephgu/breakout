@@ -129,11 +129,9 @@ public class Breakout extends GraphicsProgram {
 		while (ballNotAtBottom()) {
 			if (numBricks == 0) break;
 			if(((ballx+BALL_RADIUS*2) > WIDTH) || ballx < 0) {
-				bounceClip.play();
 				vx = -vx;
 			}
 			if(((bally + BALL_RADIUS*2) > HEIGHT) || bally < 0) {
-				bounceClip.play();
 				vy = -vy;
 			}
 			ballx += vx;
@@ -156,7 +154,6 @@ public class Breakout extends GraphicsProgram {
 	private void checkForCollisions() {
 		GObject collider = getCollidingObject(); 
 		if (collider == paddle) {
-			bounceClip.play();
 			vy = -vy; 
 		} else if ((collider != null)) {
 			bounceClip.play();
@@ -207,6 +204,7 @@ public class Breakout extends GraphicsProgram {
 	/* Private instance variables */
 	
 	AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
+	AudioClip bgMusic = MediaTools.loadAudioClip("gameboy.mp3");
 	GRect paddle = new GRect((WIDTH - PADDLE_WIDTH)/2.0, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT), PADDLE_WIDTH, PADDLE_HEIGHT);
 	GOval ball = new GOval((WIDTH - BALL_RADIUS*2)/2.0, (HEIGHT - BALL_RADIUS*2)/2.0, BALL_RADIUS*2, BALL_RADIUS*2);
 	GLabel gameover = new GLabel("GAME OVER");
