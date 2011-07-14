@@ -137,6 +137,8 @@ public class Breakout extends GraphicsProgram {
 			pause(10);
 		}
 		endGame();
+		waitForClick();
+		restart();
 	}
 	
 	private void initialMovement() {
@@ -180,6 +182,9 @@ public class Breakout extends GraphicsProgram {
 		add(end);
 	}
 	
+	private void restart() {
+		run();
+	}
 	/* Private instance variables */
 
 	
