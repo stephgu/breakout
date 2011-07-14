@@ -161,6 +161,7 @@ public class Breakout extends GraphicsProgram {
 				{ballx + 2*BALL_RADIUS, bally + 2*BALL_RADIUS}, {ballx, bally + 2*BALL_RADIUS}};
 		for (int i = 0; i < 4; i++) {
 			print(fourCorners[i][1]);
+			print(fourCorners[i][2]);
 			GObject obj = getElementAt(fourCorners[i][1], fourCorners[i][2]);
 			if (obj != null) {
 				return obj;
