@@ -249,6 +249,10 @@ public class Breakout extends GraphicsProgram {
 			add(gameover);
 		}
 		setScores();
+		clickToRestart.setFont(new Font("Serif", Font.BOLD, 16));
+		clickToRestart.setLocation((WIDTH - clickToRestart.getWidth())/2.0, 
+									gameover.getY() + clickToRestart.getHeight());
+		add(clickToRestart);
 	}
 	
 	private void setScores() {
@@ -281,6 +285,7 @@ public class Breakout extends GraphicsProgram {
 	GLabel clickForStart = new GLabel("CLICK TO START");
 	GLabel gameover = new GLabel("GAME OVER");
 	GLabel win = new GLabel("YOU WIN");
+	GLabel clickToRestart = new GLabel("CLICK TO RESTART");
 	
 	private RandomGenerator rgen = RandomGenerator.getInstance(); 
 	private boolean glued;
