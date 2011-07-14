@@ -160,10 +160,8 @@ public class Breakout extends GraphicsProgram {
 			
 		} else if (collider == paddle) {
 			vy = -vy; 
-			if (((ballx < paddle.getX()+BALL_RADIUS*2) && (ballx > paddle.getX()-BALL_RADIUS*1.5)) || 
-					((ballx < paddle.getX()+PADDLE_WIDTH) && (ballx > paddle.getX()+PADDLE_WIDTH-BALL_RADIUS*2))) {
-				vx = -vx;
-			}
+			edgeConditions();
+			speedGame();
 		} else if ((collider != null)) {
 			bounceClip.play();
 			vy = -vy; 
@@ -184,6 +182,18 @@ public class Breakout extends GraphicsProgram {
 		return null; 
 	}
 	
+	private void edgeConditions() {
+		if (((ballx < paddle.getX()+BALL_RADIUS) && (ballx > paddle.getX()-BALL_RADIUS)) || 
+				((ballx < paddle.getX()+PADDLE_WIDTH) && (ballx > paddle.getX()+PADDLE_WIDTH-BALL_RADIUS))) {
+			vx = -vx;
+		}
+	}
+	
+	private void speedGame() {
+		if (hitPaddleCount > 7) {
+			vx *= 1.3;
+		}
+	}
 	private void keepScore() {
 		numBricks--;
 		yourScore += 10;
