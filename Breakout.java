@@ -116,6 +116,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void setUpBall() {
+		print("set up ball");
 		ball.setFilled(true);
 		ball.setFillColor(Color.BLACK);
 		add(ball);
