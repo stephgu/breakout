@@ -191,8 +191,8 @@ public class Breakout extends GraphicsProgram {
 	
 	private void speedGame() {
 		hitPaddleCount++;
-		if (hitPaddleCount > 7) {
-			vx *= 1.3;
+		if (hitPaddleCount > 10) {
+			vx *= 1.03;
 		}
 	}
 	private void keepScore() {
