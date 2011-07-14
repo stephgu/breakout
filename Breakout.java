@@ -124,10 +124,8 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void makeBallMove() {
-		println("make ball move: " + ballNotAtBottom());
 		initialMovement();
 		while (ballNotAtBottom()) {
-			println("ball moves");
 			if(((ballx+BALL_RADIUS*2) > WIDTH) || ballx < 0) {
 				vx = -vx;
 			}
@@ -158,6 +156,7 @@ public class Breakout extends GraphicsProgram {
 		} else if ((collider != null)) {
 			vy = -vy; 
 			remove(collider);
+			println("removed");
 		}
 	}
 	
