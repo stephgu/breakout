@@ -123,6 +123,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void makeBallMove() {
+		print("make ball move");
 		initialMovement();
 		while (ballNotAtBottom()) {
 			if(((ballx+BALL_RADIUS*2) > WIDTH) || ballx < 0) {
