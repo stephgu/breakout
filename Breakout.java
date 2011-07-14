@@ -129,9 +129,11 @@ public class Breakout extends GraphicsProgram {
 		while (ballNotAtBottom()) {
 			if (numBricks == 0) break;
 			if(((ballx+BALL_RADIUS*2) > WIDTH) || ballx < 0) {
+				bounceClip.play();
 				vx = -vx;
 			}
 			if(((bally + BALL_RADIUS*2) > HEIGHT) || bally < 0) {
+				bounceClip.play();
 				vy = -vy;
 			}
 			ballx += vx;
@@ -154,8 +156,10 @@ public class Breakout extends GraphicsProgram {
 	private void checkForCollisions() {
 		GObject collider = getCollidingObject(); 
 		if (collider == paddle) {
+			bounceClip.play();
 			vy = -vy; 
 		} else if ((collider != null)) {
+			bounceClip.play();
 			vy = -vy; 
 			remove(collider);
 			numBricks--;
