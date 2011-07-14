@@ -176,7 +176,8 @@ public class Breakout extends GraphicsProgram {
 	
 	private void endGame() {
 		GLabel end = new GLabel("GAME OVER");
-		end.setLocation((WIDTH - end.getWidth())/2.0, (HEIGHT - end.getAscent())/2.0);	
+		end.setLocation((WIDTH - end.getWidth())/2.0, (HEIGHT - end.getAscent())/2.0);
+		add(end);
 	}
 	
 	/* Private instance variables */
