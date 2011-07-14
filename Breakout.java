@@ -124,10 +124,26 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void makeBallMove() {
-		vx = rgen.nextDouble(1.0, 3.0);
-		if (rgen.nextBoolean()) vx = -vx;
+		initialMovement();
+		double ballx = ball.getX();
+		double bally = ball.getY();
+		while (true) {
+			if(((ballx+BALL_RADIUS*2) > WIDTH) || ((bally + BALL_RADIUS*2) > HEIGHT) || 
+					ballx == 0 || bally == 0) {
+				vx = -vx;
+				vy = -vy;
+			}
+			ballx += vx;
+			bally += vy;
+			pause(1000);
+		}
 	}
 	
+	private void initialMovement() {
+		vx = rgen.nextDouble(1.0, 3.0);
+		if (rgen.nextBoolean()) vx = -vx;
+		vy = 3.0; 
+	}
 	/* Private instance variables */
 	
 	GRect paddle = new GRect((WIDTH - PADDLE_WIDTH)/2.0, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT), PADDLE_WIDTH, PADDLE_HEIGHT);
