@@ -180,7 +180,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void endGame() {
-		gameover.setLocation((WIDTH - end.getWidth())/2.0, (HEIGHT - end.getAscent())/2.0);
+		gameover.setLocation((WIDTH - gameover.getWidth())/2.0, (HEIGHT - gameover.getAscent())/2.0);
 		add(gameover);
 	}
 	
