@@ -108,6 +108,19 @@ public class Breakout extends GraphicsProgram {
 		add(paddle);
 	}
 	
+	private void setLabels() {
+		clickForStart.setFont(new Font("Serif", Font.BOLD, 18));
+		clickForStart.setLocation((WIDTH - clickForStart.getWidth())/2.0, (HEIGHT - clickForStart.getAscent())/2.0);
+		add(clickForStart);
+		score.setFont(new Font("Serif", Font.BOLD, 18));
+		score.setLocation(4, HEIGHT - 4);
+		add(score);
+	}
+	
+	private void removeLabels() {
+		remove(clickForStart);
+	}
+	
 	public void mouseMoved(MouseEvent e) {
 		int x = e.getX();
 		if (x > (WIDTH - PADDLE_WIDTH)) {
@@ -208,19 +221,6 @@ public class Breakout extends GraphicsProgram {
 			return false;
 		}
 		return true;
-	}
-	
-	private void setLabels() {
-		clickForStart.setFont(new Font("Serif", Font.BOLD, 18));
-		clickForStart.setLocation((WIDTH - clickForStart.getWidth())/2.0, (HEIGHT - clickForStart.getAscent())/2.0);
-		add(clickForStart);
-		score.setFont(new Font("Serif", Font.BOLD, 18));
-		score.setLocation(4, HEIGHT - 4);
-		add(score);
-	}
-	
-	private void removeLabels() {
-		remove(clickForStart);
 	}
 	
 	private void endGame() {
