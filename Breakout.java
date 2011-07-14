@@ -173,6 +173,9 @@ public class Breakout extends GraphicsProgram {
 		if (collider == score) {
 			
 		} else if (collider == paddle) {
+			if(glued == true) {
+				bally += BALL_RADIUS*2.01
+			}
 			vy = -vy; 
 			edgeConditions();
 			speedGame();
@@ -190,9 +193,15 @@ public class Breakout extends GraphicsProgram {
 		for (int i = 0; i < 4; i++) {
 			GObject obj = getElementAt(fourCorners[i][0], fourCorners[i][1]);
 			if (obj != null) {
+				if (i == 1 || i == 2) {
+					glued = true;
+				} else {
+					glued = false;
+				}
 				return obj;
 			}
 		}
+		glued = false;
 		return null; 
 	}
 	
@@ -270,6 +279,7 @@ public class Breakout extends GraphicsProgram {
 	GLabel win = new GLabel("YOU WIN");
 	
 	private RandomGenerator rgen = RandomGenerator.getInstance(); 
+	private boolean glued;
 	private double vx, vy; 
 	double ballx = ball.getX();
 	double bally = ball.getY();
