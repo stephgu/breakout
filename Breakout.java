@@ -69,6 +69,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void setUpBricks() {
+		numBricks = NBRICKS_PER_ROW*NBRICK_ROWS;
 		int y = BRICK_Y_OFFSET;
 		int cdex = 0;
 		Color[] colors = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE};
@@ -205,5 +206,5 @@ public class Breakout extends GraphicsProgram {
 	private double vx, vy; 
 	double ballx = ball.getX();
 	double bally = ball.getY();
-	private int numBricks = NBRICKS_PER_ROW*NBRICK_ROWS;
+	private int numBricks;
 }
