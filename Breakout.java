@@ -19,7 +19,7 @@ public class Breakout extends GraphicsProgram {
 
 /** Width and height of application window in pixels */
 	public static final int APPLICATION_WIDTH = 404;
-	public static final int APPLICATION_HEIGHT = 630;
+	public static final int APPLICATION_HEIGHT = 625;
 
 /** Dimensions of game board (usually the same) */
 	private static final int WIDTH = APPLICATION_WIDTH;
