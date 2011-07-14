@@ -173,6 +173,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private boolean ballNotAtBottom() {
 		if ((bally + BALL_RADIUS*2) > HEIGHT) {
+			println(bally + BALL_RADIUS*2);
 			return false;
 		}
 		return true;
