@@ -116,8 +116,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void setUpBall() {
 		ball.setLocation((WIDTH - BALL_RADIUS*2)/2.0, (HEIGHT - BALL_RADIUS*2)/2.0);
-		pause(20);
-		println("ball's y coor: " + bally);
+		println("ball's y coor: " + ball.getY());
 		ball.setFilled(true);
 		ball.setFillColor(Color.BLACK);
 		add(ball);
