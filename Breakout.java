@@ -181,6 +181,7 @@ public class Breakout extends GraphicsProgram {
 	private void keepScore() {
 		numBricks--;
 		yourScore += 10;
+		println("yourScore: " + yourScore);
 		add(score);
 	}
 	
