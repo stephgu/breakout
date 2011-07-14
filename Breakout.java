@@ -233,10 +233,10 @@ public class Breakout extends GraphicsProgram {
 			gameover.setLocation((WIDTH - gameover.getWidth())/2.0, (HEIGHT - gameover.getAscent())/2.0);
 			add(gameover);
 		}
-		setHighScore();
+		setScores();
 	}
 	
-	private void setHighScore() {
+	private void setScores() {
 		if (yourScore > highScore) {
 			highScore = yourScore;
 		}
@@ -244,6 +244,11 @@ public class Breakout extends GraphicsProgram {
 		highscore.setFont(new Font("Serif", Font.BOLD, 16));
 		highscore.setLocation((WIDTH - highscore.getWidth())/2.0, HEIGHT/2.0 + gameover.getHeight());
 		add(highscore);
+		score.setLabel("Your Score: " + yourScore);
+		score.setFont(new Font("Serif", Font.BOLD, 16));
+		score.setLocation((WIDTH - score.getWidth())/2.0, highscore.getX() + highscore.getHeight());
+		add(score);
+		
 	}
 	
 	private void restart() {
