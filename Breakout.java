@@ -182,19 +182,20 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void endGame() {
-		GLabel end = new GLabel("GAME OVER");
 		end.setLocation((WIDTH - end.getWidth())/2.0, (HEIGHT - end.getAscent())/2.0);
 		add(end);
 	}
 	
 	private void restart() {
 		run();
+		remove(end);
 	}
 	/* Private instance variables */
 
 	
 	GRect paddle = new GRect((WIDTH - PADDLE_WIDTH)/2.0, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT), PADDLE_WIDTH, PADDLE_HEIGHT);
 	GOval ball = new GOval((WIDTH - BALL_RADIUS*2)/2.0, (HEIGHT - BALL_RADIUS*2)/2.0, BALL_RADIUS*2, BALL_RADIUS*2);
+	GLabel end = new GLabel("GAME OVER");
 	private RandomGenerator rgen = RandomGenerator.getInstance(); 
 	private double vx, vy; 
 	double ballx = ball.getX();
