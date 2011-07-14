@@ -228,10 +228,12 @@ public class Breakout extends GraphicsProgram {
 		highscore.setLocation((WIDTH - highscore.getWidth())/2.0, HEIGHT/2.0 + gameover.getHeight());
 		add(highscore);
 	}
-//	private void restart() {
-//		remove(gameover);
-//		run();
-//	}
+	
+	private void restart() {
+		removeAll();
+		yourScore = 0; 
+		run();
+	}
 	
 	/* Private instance variables */
 	
