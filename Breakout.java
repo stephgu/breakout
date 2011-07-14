@@ -183,8 +183,8 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void edgeConditions() {
-		if (((ballx < paddle.getX()+BALL_RADIUS) && (ballx > paddle.getX()-BALL_RADIUS)) || 
-				((ballx < paddle.getX()+PADDLE_WIDTH) && (ballx > paddle.getX()+PADDLE_WIDTH-BALL_RADIUS))) {
+		if (((ballx < paddle.getX()+BALL_RADIUS*1.1) && (ballx > paddle.getX()-BALL_RADIUS*1.1)) || 
+				((ballx < paddle.getX()+PADDLE_WIDTH) && (ballx > paddle.getX()+PADDLE_WIDTH-BALL_RADIUS*1.1))) {
 			vx = -vx;
 		}
 	}
