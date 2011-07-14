@@ -64,6 +64,8 @@ public class Breakout extends GraphicsProgram {
 		setUpBricks();
 		setUpPaddle();
 		setUpBall();
+		waitForClick();
+		makeBallMove();
 	}
 	
 	private void setUpBricks() {
@@ -117,13 +119,11 @@ public class Breakout extends GraphicsProgram {
 		ball.setFilled(true);
 		ball.setFillColor(Color.BLACK);
 		add(ball);
-		waitForClick();
-		makeBallMove();
 	}
 	
 	private void makeBallMove() {
 		initialMovement();
-		while (true) {
+		while (ballNotAtBottom()) {
 			if(((ballx+BALL_RADIUS*2) > WIDTH) || ballx < 0) {
 				vx = -vx;
 			}
@@ -136,6 +136,7 @@ public class Breakout extends GraphicsProgram {
 			checkForCollisions();
 			pause(10);
 		}
+		endGame();
 	}
 	
 	private void initialMovement() {
@@ -167,6 +168,18 @@ public class Breakout extends GraphicsProgram {
 	}
 	/* Private instance variables */
 	
+	private boolean ballNotAtBottom() {
+		if ((bally + BALL_RADIUS*2) > HEIGHT) {
+			return false;
+		}
+		return true;
+	}
+	
+	private void endGame() {
+		GLabel end = new GLabel("GAME OVER");
+		end.setLocation((WIDTH - end.getWidth())/2.0, (HEIGHT - end.getAscent())/2.0);	
+	
+	}
 	GRect paddle = new GRect((WIDTH - PADDLE_WIDTH)/2.0, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT), PADDLE_WIDTH, PADDLE_HEIGHT);
 	GOval ball = new GOval((WIDTH - BALL_RADIUS*2)/2.0, (HEIGHT - BALL_RADIUS*2)/2.0, BALL_RADIUS*2, BALL_RADIUS*2);
 	private RandomGenerator rgen = RandomGenerator.getInstance(); 
