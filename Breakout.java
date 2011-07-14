@@ -190,6 +190,7 @@ public class Breakout extends GraphicsProgram {
 			add(win);
 		} else {
 			gameover.setLocation((WIDTH - gameover.getWidth())/2.0, (HEIGHT - gameover.getAscent())/2.0);
+			gameover.setFont(new Font("Serif", Font.BOLD, 18));
 			add(gameover);
 		}
 	}
