@@ -185,12 +185,12 @@ public class Breakout extends GraphicsProgram {
 	
 	private void endGame() {
 		if (numBricks == 0) {
-			win.setLocation((WIDTH - gameover.getWidth())/2.0, (HEIGHT - gameover.getAscent())/2.0);
 			win.setFont(new Font("Serif", Font.BOLD, 18));
+			win.setLocation((WIDTH - gameover.getWidth())/2.0, (HEIGHT - gameover.getAscent())/2.0);
 			add(win);
 		} else {
-			gameover.setLocation((WIDTH - gameover.getWidth())/2.0, (HEIGHT - gameover.getAscent())/2.0);
 			gameover.setFont(new Font("Serif", Font.BOLD, 18));
+			gameover.setLocation((WIDTH - gameover.getWidth())/2.0, (HEIGHT - gameover.getAscent())/2.0);
 			add(gameover);
 		}
 	}
