@@ -128,9 +128,10 @@ public class Breakout extends GraphicsProgram {
 		double ballx = ball.getX();
 		double bally = ball.getY();
 		while (true) {
-			if(((ballx+BALL_RADIUS*2) > WIDTH) || ((bally + BALL_RADIUS*2) > HEIGHT) || 
-					ballx == 0 || bally == 0) {
+			if(((ballx+BALL_RADIUS*2) > WIDTH) || ballx == 0) {
 				vx = -vx;
+			}
+			if(((bally + BALL_RADIUS*2) > HEIGHT) || bally == 0) {
 				vy = -vy;
 			}
 			ballx += vx;
