@@ -69,8 +69,16 @@ public class Breakout extends GraphicsProgram {
 		waitForClick();
 		removeLabels();
 		makeBallMove();
+		endGame();
+		waitForClick();
+		restart();
 	}
 	
+	/**
+	 * Sets up NBRICK_ROWS rows with NBRICKS_PER_ROW bricks in each row, changing color every two rows starting
+	 * with red, orange, yellow, blue. Has a spacing of BRICK_SEP between all sides of brick and the very first
+	 * row is offset by BRICK_Y_OFFSET 
+	 */
 	private void setUpBricks() {
 		numBricks = NBRICKS_PER_ROW*NBRICK_ROWS;
 		int y = BRICK_Y_OFFSET;
@@ -85,6 +93,9 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 	
+	/**
+	 * Creates one row of bricks, with NBRICKS_PER_ROW # of bricks in the row 
+	 */
 	private void brickRow(int y, Color color) {
 		int x = BRICK_SEP;
 		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
@@ -93,6 +104,11 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 	
+	/**
+	 * Adds a brick-shaped rectangle to the canvas as the specified spot and color
+	 * @param x The x-coor of the top left corner of the brick
+	 * @param y The y-coor of the top left corner of the brick
+	 */
 	private void addBrick(int x, int y, Color color) {
 		GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 		brick.setFilled(true);
@@ -101,6 +117,9 @@ public class Breakout extends GraphicsProgram {
 		add(brick);
 	}
 	
+	/**
+	 * Sets a black paddle in the center of the canvas
+	 */
 	private void setUpPaddle() {
 		paddle.setFilled(true);
 		paddle.setColor(Color.BLACK);
@@ -108,6 +127,9 @@ public class Breakout extends GraphicsProgram {
 		add(paddle);
 	}
 	
+	/**
+	 * Sets "CLICK TO START" label in the center and "Score" label in the bottom left corner
+	 */
 	private void setLabels() {
 		clickForStart.setFont(new Font("Serif", Font.BOLD, 18));
 		clickForStart.setLocation((WIDTH - clickForStart.getWidth())/2.0, (HEIGHT - clickForStart.getAscent())/2.0);
@@ -118,10 +140,16 @@ public class Breakout extends GraphicsProgram {
 		add(score);
 	}
 	
+	/**
+	 * Removes "CLICK TO START" label after user clicks screen 
+	 */
 	private void removeLabels() {
 		remove(clickForStart);
 	}
 	
+	/**
+	 * Controls the paddle by setting the location of the paddle at the x-coor location of your mouse 
+	 */
 	public void mouseMoved(MouseEvent e) {
 		int x = e.getX();
 		if (x > (WIDTH - PADDLE_WIDTH)) {
@@ -132,6 +160,9 @@ public class Breakout extends GraphicsProgram {
 		paddle.setLocation(x, HEIGHT - (PADDLE_Y_OFFSET + PADDLE_HEIGHT));
 	}
 	
+	/**
+	 * Sets the a black ball with radius BALL_RADIUS in the middle of the canvas
+	 */
 	private void setUpBall() {
 		ball.setLocation((WIDTH - BALL_RADIUS*2)/2.0, (HEIGHT - BALL_RADIUS*2)/2.0);
 		ballx = ball.getX();
@@ -141,6 +172,11 @@ public class Breakout extends GraphicsProgram {
 		add(ball);
 	}
 	
+	/**
+	 * Sets the ball into motion by giving it an initial downward momentum. While the ball is not at the bottom
+	 * of the screen, makes the ball bounce of the borders of the canvas, checks for collisions with bricks
+	 * and the paddle, then pauses for 10 milliseconds before repeating. 
+	 */
 	private void makeBallMove() {
 		initialMovement();
 		while (ballNotAtBottom()) {
@@ -157,17 +193,25 @@ public class Breakout extends GraphicsProgram {
 			checkForCollisions();
 			pause(10);
 		}
-		endGame();
-		waitForClick();
-		restart();
 	}
 	
+	/**
+	 * Gives the ball an initial downward vertical velocity of three, and a random horizontal velocity
+	 * from 1 to 3, with a 50% chance of going left or right 
+	 */
 	private void initialMovement() {
 		vx = rgen.nextDouble(1.0, 3.0);
 		if (rgen.nextBoolean()) vx = -vx;
 		vy = 3.0; 
 	}
 	
+	/**
+	 * Checks for collisions with the paddle or brick. If collided with brick, bounce off and remove the brick, 
+	 * and change the score accordingly.  
+	 * If collided with paddle, make sure it doesn't have the "glued to paddle" bug and bounce of the paddle. 
+	 * Change speed after colliding with paddle certain number of times. Ball's trajectory depends on where on 
+	 * the paddle the ball lands. 
+	 */
 	private void checkForCollisions() {
 		GObject collider = getCollidingObject(); 
 		if (collider == score) {
@@ -185,6 +229,11 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 	
+	/** 
+	 * Gets the object at the four corners of the ball. If an object was found at the top two corners
+	 * of the ball, set boolean glued to be true. Else, set to be false. 
+	 * @return The object at that point or null if there is no object. 
+	 */
 	private GObject getCollidingObject() {
 		double[][] fourCorners = {{ballx, bally}, {ballx + 2*BALL_RADIUS, bally}, 
 				{ballx + 2*BALL_RADIUS, bally + 2*BALL_RADIUS}, {ballx, bally + 2*BALL_RADIUS}};
@@ -203,6 +252,21 @@ public class Breakout extends GraphicsProgram {
 		return null; 
 	}
 	
+	/**
+	 * If the top two corners of the ball come in contact with the paddle, change the ball's y coor to be
+	 * a little over the diameter of the ball away from it's original position. This is to ensure the ball
+	 * does not get stuck on the paddle. 
+	 */
+	private void fixGluing() {
+		if(glued == true) {
+			bally -= BALL_RADIUS*2.03;
+		}
+	}
+	
+	/**
+	 * Tests whether the ball is on the edge of the paddle or not. If it is, make it bounce in the direction from
+	 * where it came. Otherwise, ball bounces off the paddle at appropriate angle. 
+	 */
 	private void edgeConditions() {
 		if (((ballx < paddle.getX()+BALL_RADIUS*1.1) && (ballx > paddle.getX()-BALL_RADIUS*1.1)) || 
 				((ballx < paddle.getX()+PADDLE_WIDTH) && (ballx > paddle.getX()+PADDLE_WIDTH-BALL_RADIUS*2))) {
@@ -210,6 +274,9 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 	
+	/**
+	 * Doubles the horizontal velocity of the ball after it has hit the paddle 10 times. 
+	 */
 	private void speedGame() {
 		hitPaddleCount++;
 		if (hitPaddleCount == 10) {
@@ -217,11 +284,10 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 	
-	private void fixGluing() {
-		if(glued == true) {
-			bally -= BALL_RADIUS*2.03;
-		}
-	}
+	/**
+	 * Adds 10*absolute value of horizontal velocity of ball for each brick the ball hits. Displays this in the 
+	 * "Score" label. Keeps track of the number of bricks remaining in the game.  
+	 */
 	private void keepScore() {
 		numBricks--;
 		yourScore += 10*(Math.abs(vx));
@@ -229,6 +295,10 @@ public class Breakout extends GraphicsProgram {
 		add(score);
 	}
 	
+	/**
+	 * Checks to see whether the ball has hit the bottom edge of the canvas. 
+	 * @return true if it is not at the bottom, false if it is at the bottom 
+	 */
 	private boolean ballNotAtBottom() {
 		if ((bally + BALL_RADIUS*2) > HEIGHT) {
 			println(bally + BALL_RADIUS*2);
@@ -236,6 +306,7 @@ public class Breakout extends GraphicsProgram {
 		}
 		return true;
 	}
+	
 	
 	private void endGame() {
 		GLabel end;
