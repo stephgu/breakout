@@ -308,8 +308,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	/**
-	 * Displays the end stats of the game, including whether you won or lost, the highscore, and your score. 
-	 * Adds a "CLICK TO RESTART" label. 
+	 * Displays whether you won ("YOU WIN") or lost ("GAME OVER"). Sets scores. Adds a "CLICK TO RESTART" label.
 	 */
 	private void endGame() {
 		GLabel end;
@@ -332,7 +331,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	/**
-	 * Displays the highscore and your score. 
+	 * Sets the highscore to be the highest score achieved thus far. Displays the highscore and your score.
 	 */
 	private void setScores() {
 		if (yourScore > highScore) {
