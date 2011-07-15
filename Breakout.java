@@ -61,11 +61,13 @@ public class Breakout extends GraphicsProgram {
 /** Runs the Breakout program. */
 	public void run() {
 		addMouseListeners();
+		//adds background music (gameboy theme from machinarium)
 		bgMusic.loop();
-		setUpBricks();
+		setUpBricks(); 
 		setUpPaddle();
 		setUpBall();
 		setLabels();
+		//doesn't move on to next method until you click 
 		waitForClick();
 		removeLabels();
 		makeBallMove();
