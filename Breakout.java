@@ -224,7 +224,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	private void keepScore() {
 		numBricks--;
-		yourScore += 10;
+		yourScore += 10*(Math.abs(vx)-0.5);
 		score.setLabel("Score: " + yourScore);
 		add(score);
 	}
