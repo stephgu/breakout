@@ -206,6 +206,18 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	/**
+	 * Checks to see whether the ball has hit the bottom edge of the canvas. 
+	 * @return true if it is not at the bottom, false if it is at the bottom 
+	 */
+	private boolean ballNotAtBottom() {
+		if ((bally + BALL_RADIUS*2) > HEIGHT) {
+			println(bally + BALL_RADIUS*2);
+			return false;
+		}
+		return true;
+	}
+	
+	/**
 	 * Checks for collisions with the paddle or brick. If collided with brick, bounce off and remove the brick, 
 	 * and change the score accordingly.  
 	 * If collided with paddle, make sure it doesn't have the "glued to paddle" bug and bounce of the paddle. 
@@ -296,18 +308,9 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	/**
-	 * Checks to see whether the ball has hit the bottom edge of the canvas. 
-	 * @return true if it is not at the bottom, false if it is at the bottom 
+	 * Displays the end stats of the game, including whether you won or lost, the highscore, and your score. 
+	 * Adds a "CLICK TO RESTART" label. 
 	 */
-	private boolean ballNotAtBottom() {
-		if ((bally + BALL_RADIUS*2) > HEIGHT) {
-			println(bally + BALL_RADIUS*2);
-			return false;
-		}
-		return true;
-	}
-	
-	
 	private void endGame() {
 		GLabel end;
 		if (numBricks == 0) {
@@ -328,6 +331,9 @@ public class Breakout extends GraphicsProgram {
 		add(clickToRestart);
 	}
 	
+	/**
+	 * Displays the highscore and your score. 
+	 */
 	private void setScores() {
 		if (yourScore > highScore) {
 			highScore = yourScore;
@@ -343,6 +349,9 @@ public class Breakout extends GraphicsProgram {
 		
 	}
 	
+	/**
+	 * Resets your score to zero, removes all objects off the canvas, then restarts the game. 
+	 */
 	private void restart() {
 		yourScore = 0;
 		removeAll(); 
